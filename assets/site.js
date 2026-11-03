@@ -7,7 +7,6 @@ const PAGES = [
   ['publications', 'Publications'],
   ['news', 'News'],
   ['join', 'Join'],
-  ['contact', 'Contact'],
 ];
 const SITE = '(PIXEL)² Lab';
 
@@ -18,7 +17,7 @@ const links = PAGES.map(([id, label]) => `<a href="#${id}" data-link="${id}">${l
 document.body.insertAdjacentHTML('afterbegin', `
   <header class="site"><div class="wrap">
     <a class="brand" href="#home" aria-label="${SITE}">
-      <img src="assets/img/logo-wordmark.webp" alt="PIXEL" width="80" height="40"><span>Lab</span>
+      <img src="assets/img/logo-wordmark.webp" alt="PIXEL" width="80" height="40">
     </a>
     <nav aria-label="Main">${links}</nav>
   </div></header>`);
