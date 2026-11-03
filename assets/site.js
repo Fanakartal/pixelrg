@@ -47,3 +47,19 @@ function show() {
 
 window.addEventListener('hashchange', show);
 show();
+
+// BibBase has no option to hide menu entries, so drop the ones we don't want from its "Group by" menu.
+const HIDDEN_BIBBASE_GROUPS = ['Keyword', 'Downloads'];
+const pubList = document.querySelector('.bibbase'); // not named "bibbase": BibBase defines that global
+
+function trimBibbaseMenu() {
+  pubList.querySelectorAll('.dropdown-menu a').forEach((a) => {
+    if (HIDDEN_BIBBASE_GROUPS.includes(a.textContent.trim())) (a.closest('li') || a).remove();
+  });
+}
+
+if (pubList) {
+  trimBibbaseMenu();
+  // BibBase may build its menu after load, so keep trimming when it changes.
+  new MutationObserver(trimBibbaseMenu).observe(pubList, { childList: true, subtree: true });
+}
